@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 
 const URL = 'https://jsonplaceholder.typicode.com/comments';
 
-export const Csr = () => {
+export default function Csr() {
 	const [data, setData] = useState([]);
 	useEffect(async () => {
 		const res = await fetch(URL);

@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css';
 
-export const Ssr = ({ comments }) => {
+export default function Ssr({ comments }) {
 	return (
 		<div className={styles.rendering}>
 			<h2>SSR</h2>
