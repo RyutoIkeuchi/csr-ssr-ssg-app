@@ -1,5 +1,5 @@
-import Ssr from './Ssr';
-import Csr from './Csr';
+import Ssr from '../components/Ssr';
+import Csr from '../components/Csr';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link'
 
