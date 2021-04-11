@@ -1,25 +1,19 @@
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.css';
+import { Ssr } from './Ssr'
+import {Csr} from './Csr'
 
 export async function getServerSideProps() {
-	const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-	const todos = await res.json();
+	const res = await fetch('https://jsonplaceholder.typicode.com/comments');
+	const comments = await res.json();
 	return {
 		props: {
-			todos,
+			comments,
 		},
 	};
 }
 
-export default function Home({ todos }) {
-  const [datas, setDatas] = useState([]);
-  
-	useEffect(async () => {
-		const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-		const data = await res.json();
-		setDatas(data);
-  }, []);
+export default function Home(props) {
   
 	return (
 		<div className={styles.container}>
@@ -35,17 +29,10 @@ export default function Home({ todos }) {
 					Next.jsによって実装できるCSR・SSR・SSGについて
 				</p>
         
-				<div>
-					{todos.map((todo) => (
-						<p key={todo.id}>{todo.title}</p>
-					))}
-				</div>
-
-				<div>
-					{datas.map((des) => (
-						<p key={des.id}>{des.title}</p>
-					))}
-				</div>
+				<section className={styles.csrSsr}>
+					<Ssr comments={ props.comments}/>
+					<Csr/>
+				</section>
 			</main>
 
 			<footer className={styles.footer}>
