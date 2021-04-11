@@ -1,27 +1,39 @@
-import Head from 'next/head';
+import { Ssr } from './Ssr';
+import { Csr } from './Csr';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link';
+import Link from 'next/link'
 
-export default function Home() {
+export async function getServerSideProps() {
+	const res = await fetch('https://jsonplaceholder.typicode.com/comments');
+	const comments = await res.json();
+	return {
+		props: {
+			comments,
+		},
+	};
+}
+
+export default function CsrSsr(props) {
 	return (
 		<div className={styles.container}>
-			<Head>
-				<title>Create Next App</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-
 			<main className={styles.main}>
 				<div className={styles.mainTitle}>
 					<h1 className={styles.title}>Next.jsの魅力を紹介</h1>
 					<p className={styles.description}>
 						Next.jsによって実装できるCSR・SSR・SSGについて
-							<br/>下のボタンを推してみて
+						<br />
+						下のボタンを推してみて
 					</p>
 
-					<Link href="/CsrSsr">
-						<a>CSR{""}vs{'' }SSR</a>
+					<Link href="/">
+						<a>ホームに戻る</a>
 					</Link>
 				</div>
+
+				<section className={styles.csrSsr}>
+					<Ssr comments={props.comments} />
+					<Csr />
+				</section>
 			</main>
 
 			<footer className={styles.footer}>
