@@ -2,6 +2,7 @@ import { Ssg } from '../components/Ssg';
 import Csr from '../components/Csr';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import { TopView } from '../components/TopView';
 
 export async function getStaticProps() {
 	const res = await fetch('https://jsonplaceholder.typicode.com/comments');
@@ -15,21 +16,9 @@ export async function getStaticProps() {
 
 export default function CsrSsg(props) {
 	return (
-		<div className={styles.container}>
-			<main className={styles.main}>
-				<div className={styles.mainTitle}>
-					<h1 className={styles.title}>Next.jsの魅力を紹介</h1>
-					<p className={styles.description}>
-						Next.jsによって実装できるCSR・SSR・SSGについて
-						<br />
-						下のボタンを推してみて
-					</p>
-
-					<Link href="/">
-						<a>ホームに戻る</a>
-					</Link>
-				</div>
-
+		<div className="max-w-screen-lg mx-auto min-h-screen">
+			<main className="px-0 py-20">
+				<TopView/>
 				<section className={styles.csrSsr}>
 					<Ssg comments={props.comments} />
 					<Csr />

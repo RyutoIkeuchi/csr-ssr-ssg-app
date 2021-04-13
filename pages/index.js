@@ -1,35 +1,18 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import { TopView } from '../components/TopView';
 
 export default function Home() {
 	return (
-		<div className="container mx-auto px-4">
+		<div className="max-w-screen-lg mx-auto min-h-screen">
 			<Head>
 				<title>Create Next App</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className={styles.main}>
-				<div className={styles.mainTitle}>
-					<h1 className={styles.title}>Next.jsの魅力を紹介</h1>
-					<p className={styles.description}>
-						Next.jsによって実装できるCSR・SSR・SSGについて
-						<br />
-						下のボタンを推してみて
-					</p>
-
-					<Link href="/CsrSsr">
-						<a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-							CSR{''}vs{''}SSR
-						</a>
-					</Link>
-					<Link href="/CsrSsg">
-						<a className={styles.selectButton}>
-							CSR{''}vs{''}SSG
-						</a>
-					</Link>
-				</div>
+			<main className="px-0 py-20">
+				<TopView/>
 			</main>
 
 			<footer className={styles.footer}>
