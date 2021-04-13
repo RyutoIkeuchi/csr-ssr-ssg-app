@@ -59,11 +59,15 @@
   display: flex;
   justify-content: space-around;
 }
-
+iui
 .rendering {
   width: 30%;
 }
 
 .mainTitle {
   text-align: center;
+}
+
+.selectButton {
+  margin: 30px;
 }
