@@ -21,14 +21,6 @@
   height: 1em;
 }
 
-.csrSsr {
-  display: flex;
-  justify-content: space-around;
-}
-.rendering {
-  width: 30%;
-}
-
 .selectButton {
   margin: 30px;
 }

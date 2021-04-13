@@ -4,8 +4,10 @@ import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import { TopView } from '../components/TopView';
 
+const URL = 'https://jsonplaceholder.typicode.com/comments';
+
 export async function getStaticProps() {
-	const res = await fetch('https://jsonplaceholder.typicode.com/comments');
+	const res = await fetch(URL);
 	const comments = await res.json();
 	return {
 		props: {
@@ -18,10 +20,14 @@ export default function CsrSsg(props) {
 	return (
 		<div className="max-w-screen-lg mx-auto min-h-screen">
 			<main className="px-0 py-20">
-				<TopView/>
-				<section className={styles.csrSsr}>
-					<Ssg comments={props.comments} />
-					<Csr />
+				<TopView />
+				<section className="flex justify-around mt-10">
+					<article className="w-2/5 min-h-screen border-4">
+						<Ssg comments={props.comments} />
+					</article>
+					<article className="w-2/5 min-h-screen border-4">
+						<Csr />
+					</article>
 				</section>
 			</main>
 

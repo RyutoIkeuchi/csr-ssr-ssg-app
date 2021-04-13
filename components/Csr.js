@@ -12,11 +12,11 @@ export default function Csr() {
 	}, []);
 
 	return (
-		<div className={styles.rendering}>
-			<h2>CSR</h2>
+		<div className='p-4'>
+			<h2 className="text-4xl font-bold text-gray-900 mb-4 text-center" >CSR</h2>
 			<ul>
 				{data.map(e => (
-					<li key={e.id}>{e.body}</li>
+					<li className="mb-5 border-4 p-3" key={e.id}>{e.body}</li>
 				))}
 			</ul>
 		</div>

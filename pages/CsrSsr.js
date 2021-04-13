@@ -1,11 +1,13 @@
 import Ssr from '../components/Ssr';
 import Csr from '../components/Csr';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link'
+import Link from 'next/link';
 import { TopView } from '../components/TopView';
 
+const URL = 'https://jsonplaceholder.typicode.com/comments';
+
 export async function getServerSideProps() {
-	const res = await fetch('https://jsonplaceholder.typicode.com/comments');
+	const res = await fetch(URL);
 	const comments = await res.json();
 	return {
 		props: {
@@ -18,10 +20,14 @@ export default function CsrSsr(props) {
 	return (
 		<div className="max-w-screen-lg mx-auto min-h-screen">
 			<main className="px-0 py-20">
-				<TopView/>
-				<section className={styles.csrSsr}>
-					<Ssr comments={props.comments} />
-					<Csr />
+				<TopView />
+				<section className="flex justify-around mt-10">
+					<article className="w-2/5 min-h-screen border-4">
+						<Ssr comments={props.comments} />
+					</article>
+					<article className="w-2/5 min-h-screen border-4">
+						<Csr />
+					</article>
 				</section>
 			</main>
 
