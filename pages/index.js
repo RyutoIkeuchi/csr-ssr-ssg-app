@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import { TopView } from '../components/TopView';
+import { Loading } from '../components/Loading';
 
 export default function Home() {
 	return (
@@ -12,7 +13,11 @@ export default function Home() {
 			</Head>
 
 			<main className="px-0 py-20">
-				<TopView/>
+				<TopView />
+				<section className="flex justify-around mt-10">
+					<Loading/>
+				  <Loading/>
+				</section>
 			</main>
 
 			<footer className={styles.footer}>
